@@ -7,7 +7,10 @@ const handle = app.getRequestHandler()
 
 app.prepare()
 .then(() => {
-  const server = express()
+  const server = express();
+  const showRoutes = require('./routes/index.js');
+
+  server.get('/api', showRoutes);
 
   server.get('/p/:id', (req, res) => {
     const actualPage = '/post'
